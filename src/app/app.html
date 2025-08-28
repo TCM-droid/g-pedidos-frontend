@@ -31,14 +31,15 @@
     min-height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     padding: 1rem;
     box-sizing: inherit;
     position: relative;
   }
 </style>
 
+<app-header></app-header>
 <main class="main">
+  <router-outlet />
 </main>
 
-<router-outlet />
