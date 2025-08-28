@@ -1,1 +1,22 @@
-<p>produto-form works!</p>
+<div class="ajusta-form-vert">
+  <form [formGroup]="produtoForm" (ngSubmit)="salvar()">
+    <mat-form-field floatLabel="always">
+      <mat-label>Nome</mat-label>
+      <input matInput type="text" type="text" id="nome" formControlName="nome">
+    </mat-form-field>
+    <mat-form-field floatLabel="always">
+      <mat-label>Descrição</mat-label>
+      <input matInput type="text" id="descricao" formControlName="descricao">
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always">
+      <mat-label>Preço</mat-label>
+      <input matInput type="number" placeholder="0" id="preco" formControlName="preco"/>
+      <span matTextPrefix>$&nbsp;</span>
+    </mat-form-field>
+
+    <button matButton="elevated" type="submit" [disabled]="!produtoForm.valid">
+        <mat-icon>save</mat-icon> Salvar
+      </button>
+  </form>
+</div>

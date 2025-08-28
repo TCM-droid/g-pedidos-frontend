@@ -1,0 +1,8 @@
+.ajusta-form-vert{
+    display: flex;
+    height: 200px;
+    width: 200px;
+    align-items: center;
+    padding: 1rem;
+    position: relative;
+}

@@ -1,4 +1,10 @@
-<h1>Produtos Cadastrados</h1>
+
+<div class="titulo">
+  <h1>Produtos Cadastrados</h1>
+  <button matMiniFab aria-label="Novo Produto" style="margin-top: 5px;" routerLink="/produtos/novo">
+        <mat-icon>add</mat-icon>
+      </button>
+</div>
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
     <!-- Columns definition -->
