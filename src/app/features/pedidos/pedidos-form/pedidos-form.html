@@ -1,1 +1,19 @@
-<p>pedidos-form works!</p>
+<div class="ajusta-form-vert">
+  <form [formGroup]="pedidoForm" (ngSubmit)="salvar()">
+    <mat-form-field floatLabel="always">
+      <mat-label>Nome Consumidor</mat-label>
+      <input matInput type="text" type="text" id="nome" formControlName="nomeConsumidor">
+    </mat-form-field>
+
+    <mat-selection-list #produtoCb formControlName="produtosSelecionados">
+      @for (produto of produtos; track produto) {
+        <mat-list-option [value]="produto.sku">{{produto.nome}}</mat-list-option>
+          <input matInput type="number" (change)="trackQuantidade($event, produto)">
+      }
+    </mat-selection-list>
+
+    <button matButton="elevated" type="submit" [disabled]="!pedidoForm.valid">
+        <mat-icon>save</mat-icon> Salvar
+      </button>
+  </form>
+</div>

@@ -7,6 +7,7 @@ import { environment } from '../environments/environment';
 })
 export class PedidosService {
 
+
   constructor(private http: HttpClient) {}
 
   private baseUrl = environment.apiUrl;
@@ -15,4 +16,7 @@ export class PedidosService {
     return this.http.get(`${this.baseUrl}/pedidos/`);
   }
 
+  cadastrarPedido(pedido: any) {
+    return this.http.post(`${this.baseUrl}/pedidos/cadastrar`, pedido);
+  }
 }
