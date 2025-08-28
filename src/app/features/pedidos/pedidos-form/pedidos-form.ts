@@ -10,12 +10,15 @@ import {MatInputModule} from '@angular/material/input';
 import { PedidosService } from '../../../servicos/pedidos-service';
 import {MatListModule} from '@angular/material/list';
 import { ProdutosService } from '../../../servicos/produtos-service';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {provideNativeDateAdapter} from '@angular/material/core';
 
 @Component({
   selector: 'app-pedidos-form',
-  imports: [ReactiveFormsModule, MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatListModule, FormsModule],
+  imports: [ReactiveFormsModule, MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatListModule, FormsModule, MatDatepickerModule],
   templateUrl: './pedidos-form.html',
-  styleUrl: './pedidos-form.css'
+  styleUrl: './pedidos-form.css',
+  providers: [provideNativeDateAdapter()]
 })
 export class PedidosForm implements OnInit{
   pedidoForm: FormGroup;
@@ -28,6 +31,7 @@ export class PedidosForm implements OnInit{
 
     this.pedidoForm = this.form.group({
       nomeConsumidor: ['', [Validators.required, Validators.minLength(2)]],
+      dataPedido: ['', [Validators.required]],
       produtosSelecionados: new FormControl([])
     });
   }
@@ -52,7 +56,6 @@ export class PedidosForm implements OnInit{
     if(this.pedidoForm.valid){
 
         let pedido = this.pedidoForm.value;
-        pedido.dataPedido = new Date();
         pedido.produtos = [];
         for (const sku of this.pedidoForm.value.produtosSelecionados) {
           let produto:any = this.trackProdutos.get(sku);
