@@ -16,7 +16,6 @@ import {RouterLink} from '@angular/router';
 })
 export class ProdutoListar implements OnInit, AfterViewInit {
 
-
   constructor(private produtosService: ProdutosService) {}
 
   tituloColunas: string[] = ['SKU', 'Nome', 'Descrição', 'Preço'];
